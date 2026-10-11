@@ -3,6 +3,8 @@
 Code for all experiments in the paper. The results, logs and figures are not
 included. Every script writes them to `results/` when it runs.
 
+License: MIT (see `LICENSE`).
+
 ## Setup
 
 The paper's results were computed with Python 3.12 and the package versions
@@ -106,6 +108,20 @@ python exp27_analysis.py
 - `exp27_analysis.py` writes `results/EXP27_NUMBERS.md` (means, bootstrap
   intervals and the tests with Holm's adjustment), Table 7 as
   `results/exp27_table.tex`, a per-problem summary and two figures.
+
+## Expected results
+
+In the runs for the paper (Appendix E of the paper says which computer ran
+which experiment), these commands gave the values below. On other hardware,
+individual numbers can differ (see Reproducibility below).
+
+| Command | Paper | Values |
+|---|---|---|
+| `python run_all.py --only exp13` | Fig. 1, App. D.2 | naive top-3 contains a duplicate in 37.2% of 250 batches (39.2% and 43.2% on two other computers); CL-min in none on every computer |
+| `python analysis/exp24_paper_numbers.py` | Table 2 | mean regret at q = 16: CL-min 0.247, KB 0.244, Lipschitz LP 0.344, q-LogEI 0.322, TS 0.231; random search 0.581 |
+| `python exp27_analysis.py` | Table 7 | q-LogEI with the GP of App. B: 0.194, 0.253, 0.334 at q = 1, 4, 16 |
+| `python exp26_rf_real_training.py summarize` | App. D.5 | validation error: sequential EI 2.92 ± 0.17, random search 4.00 ± 0.53 |
+| `python analysis/make_tables.py` | Tables 1, 4, 5; App. C, D.1-D.3 | as in the paper |
 
 ## Files
 
